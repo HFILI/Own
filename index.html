@@ -28,12 +28,12 @@
         <!-- Language Dropdown -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown">
-            <img src="../Pictures/nl.svg" class="flag"> Dutch
+            <img src="./Pictures/nl.svg" class="flag"> Dutch
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item lang-select" href="#" data-lang="nl"><img src="../Pictures/nl.svg" class="flag"> Dutch</a></li>
-            <li><a class="dropdown-item lang-select" href="#" data-lang="hu"><img src="../Pictures/hu.svg" class="flag"> Hungarian</a></li>
-            <li><a class="dropdown-item lang-select" href="#" data-lang="en"><img src="../Pictures/en.svg" class="flag"> English</a></li>
+            <li><a class="dropdown-item lang-select" href="#" data-lang="nl"><img src="./Pictures/nl.svg" class="flag"> Dutch</a></li>
+            <li><a class="dropdown-item lang-select" href="#" data-lang="hu"><img src="./Pictures/hu.svg" class="flag"> Hungarian</a></li>
+            <li><a class="dropdown-item lang-select" href="#" data-lang="en"><img src="./Pictures/en.svg" class="flag"> English</a></li>
           </ul>
         </li>
 
@@ -93,9 +93,9 @@
     // Update dropdown with flag
     const dropdown = document.getElementById("languageDropdown");
     if(dropdown){
-      let flagSrc = lang === "nl" ? "../Pictures/nl.svg" :
-                    lang === "hu" ? "../Pictures/hu.svg" :
-                    "../Pictures/en.svg";
+      let flagSrc = lang === "nl" ? "./Pictures/nl.svg" :
+                    lang === "hu" ? "./Pictures/hu.svg" :
+                    "./Pictures/en.svg";
       let langText = lang === "nl" ? "Dutch" :
                     lang === "hu" ? "Hungarian" :
                     "English";
@@ -154,4 +154,5 @@ function updateLanguage() {
 </script>
 
 </body>
+
 </html>
