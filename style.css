@@ -107,7 +107,7 @@ body {
 
 /* ========== HOMEPAGE BACKGROUND ========== */
 .home {
-  background: url("../Pictures/wp15631861.webp") center/cover no-repeat;
+  background: url("/Pictures/wp15631861.webp") center/cover no-repeat;
   height: 100vh;
 }
 
@@ -409,3 +409,4 @@ a.strava{
   font-weight: bold;
   color: #FC4C02 ;
 }
+
