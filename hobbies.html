@@ -29,12 +29,12 @@
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" data-bs-toggle="dropdown">
-            <img src="../Pictures/nl.svg" class="flag"> Dutch
+            <img src="./Pictures/nl.svg" class="flag"> Dutch
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" onclick="setLanguage('nl')"><img src="../Pictures/nl.svg" class="flag"> Dutch</a></li>
-            <li><a class="dropdown-item" onclick="setLanguage('hu')"><img src="../Pictures/hu.svg" class="flag"> Hungarian</a></li>
-            <li><a class="dropdown-item" onclick="setLanguage('en')"><img src="../Pictures/en.svg" class="flag"> English</a></li>
+            <li><a class="dropdown-item" onclick="setLanguage('nl')"><img src="./Pictures/nl.svg" class="flag"> Dutch</a></li>
+            <li><a class="dropdown-item" onclick="setLanguage('hu')"><img src="./Pictures/hu.svg" class="flag"> Hungarian</a></li>
+            <li><a class="dropdown-item" onclick="setLanguage('en')"><img src="./Pictures/en.svg" class="flag"> English</a></li>
           </ul>
         </li>
 
@@ -51,7 +51,7 @@
 
     <div class="card-grid">
       <div class="info-card">
-        <img src="../Pictures/360_F_1417474994_tzZhGZVZ0n9SjLvlhNig5HfRp2sN5ilU.jpg" alt="">
+        <img src="./Pictures/360_F_1417474994_tzZhGZVZ0n9SjLvlhNig5HfRp2sN5ilU.jpg" alt="">
         <h3 data-key="hobby_run_title">🏃 Lopen</h3>
         <p data-key="hobby_run_text">
           Ik ga regelmatig op long runs, indien je meer wilt weten, zie mijn
@@ -60,7 +60,7 @@
       </div>
 
       <div class="info-card">
-        <img src="../Pictures/photo-1534438327276-14e5300c3a48.avif" alt="">
+        <img src="./Pictures/photo-1534438327276-14e5300c3a48.avif" alt="">
         <h3 data-key="hobby_gym_title">💪🏼 Gym</h3>
         <p data-key="hobby_gym_text">
           Ik ga al een lange tijd actief naar de gym.
@@ -68,7 +68,7 @@
       </div>
 
       <div class="info-card">
-        <img src="../Pictures/istockphoto-1427010369-612x612.jpg" alt="">
+        <img src="./Pictures/istockphoto-1427010369-612x612.jpg" alt="">
         <h3 data-key="hobby_game_title">🎮 Game Development / Gaming</h3>
         <p data-key="hobby_game_text">
           In leer ook graag ik over Game Development, en speel zelf graag games!
@@ -76,7 +76,7 @@
       </div>
 
       <div class="info-card">
-        <img src="../Pictures/PropsPageThumb1.avif" alt="">
+        <img src="./Pictures/PropsPageThumb1.avif" alt="">
         <h3 data-key="hobby_free_title">🕐Vrije tijd</h3>
         <p data-key="hobby_free_text">
           In mijn vrije tijd kijk ik ook acief naar Formule 1 en de top 5 leagues van voetbal!
@@ -174,7 +174,7 @@
     if (dropdown) {
       const flag = lang === "nl" ? "nl" : lang === "hu" ? "hu" : "en";
       const name = lang === "nl" ? "Dutch" : lang === "hu" ? "Hungarian" : "English";
-      dropdown.innerHTML = `<img src="../Pictures/${flag}.svg" class="flag"> ${name}`;
+      dropdown.innerHTML = `<img src="./Pictures/${flag}.svg" class="flag"> ${name}`;
     }
   }
 
@@ -184,3 +184,4 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
