@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Over mij</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand fw-semibold" href="index.html">Levente Iván</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto gap-lg-3 align-items-lg-center">
+        <li><a class="nav-link" data-key="nav_about" href="about.html">Over mij</a></li>
+        <li><a class="nav-link" data-key="nav_education" href="education.html">Educatie</a></li>
+        <li><a class="nav-link" data-key="nav_hobbies" href="hobbies.html">Hobby’s</a></li>
+        <li><a class="nav-link" data-key="nav_skills" href="skills.html">Skills</a></li>
+        <li><a class="nav-link" data-key="nav_contact" href="contact.html">Contact</a></li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" data-bs-toggle="dropdown">
+            <img src="./Pictures/nl.svg" class="flag"> Dutch
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" onclick="setLanguage('nl')"><img src="./Pictures/nl.svg" class="flag"> Dutch</a></li>
+            <li><a class="dropdown-item" onclick="setLanguage('hu')"><img src="./Pictures/hu.svg" class="flag"> Hungarian</a></li>
+            <li><a class="dropdown-item" onclick="setLanguage('en')"><img src="./Pictures/en.svg" class="flag"> English</a></li>
+          </ul>
+        </li>
+
+        <li><button class="btn btn-sm btn-darkmode" onclick="toggleDarkMode()">🌙</button></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Page Content -->
+<main class="page-wrapper">
+  <section class="page-card">
+    <h1 data-key="about_title">Over mij</h1>
+    <p data-key="about_text">
+      Hey, ik ben Levente Iván, maar noem me gewoon Levi.
+      Ik ben erg geinteresseerd in Informatica en doe het met plezier.
+      Ik heb dit uit verveling gemaakt, dus voel je vrij om me te stalken hier... 
+    </p>
+
+    <div class="card-grid">
+      <div class="info-card">
+        <h3>💻 Informatica</h3>
+        <p>Ik hou van programmeren en nieuwe talen/dingen leren.</p>
+      </div>
+
+      <div class="info-card">
+        <h3>🚀 Toekomst</h3>
+        <p>Mijn doel is verder om mijn kennis over informatica actief te laten groeien.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Scripts -->
+<script>
+  // Dark mode
+  if(localStorage.getItem("darkMode")==="enabled") document.body.classList.add("dark-mode");
+  function toggleDarkMode(){
+    document.body.classList.toggle("dark-mode");
+    localStorage.setItem("darkMode",document.body.classList.contains("dark-mode")?"enabled":"disabled");
+  }
+
+  // Translations
+  const translations = {
+    nl:{nav_about:"Over mij",nav_education:"Educatie",nav_hobbies:"Hobby’s",nav_skills:"Skills",nav_contact:"Contact",about_title:"Over mij",about_text:"Hey, ik ben Levente Iván, maar noem me gewoon Levi.\nIk ben erg geinteresseerd in Informatica en doe het met plezier.\nIk heb dit uit verveling gemaakt, dus voel je vrij om me te stalken hier..."},
+    hu:{nav_about:"Rólam",nav_education:"Oktatás",nav_hobbies:"Hobbik",nav_skills:"Készségek",nav_contact:"Kapcsolat",about_title:"Rólam",about_text:"Szia, Levente Iván vagyok.\nHívj csak Levi-nek.\nÉrdekel az informatika és élvezem.\nEzt unatkozásból csináltam, nyugodtan nézd meg..."},
+    en:{nav_about:"About me",nav_education:"Education",nav_hobbies:"Hobbies",nav_skills:"Skills",nav_contact:"Contact",about_title:"About me",about_text:"Hey, I am Levente Iván, but call me Levi.\nI am very interested in Computer Science and enjoy doing it.\nI made this out of boredom, feel free to explore..."}
+  };
+
+  function setLanguage(lang){
+    localStorage.setItem("siteLang",lang);
+
+    // Update text
+    document.querySelectorAll("[data-key]").forEach(el=>{
+      const key=el.dataset.key;
+      if(translations[lang][key]) el.textContent=translations[lang][key];
+    });
+
+    // Update dropdown
+    const dropdown=document.getElementById("languageDropdown");
+    if(dropdown){
+      let flagSrc = lang==="nl"?"./Pictures/nl.svg":lang==="hu"?"./Pictures/hu.svg":"./Pictures/en.svg";
+      let langText = lang==="nl"?"Dutch":lang==="hu"?"Hungarian":"English";
+      dropdown.innerHTML=`<img src="${flagSrc}" class="flag"> ${langText}`;
+    }
+  }
+
+  document.querySelectorAll(".lang-select").forEach(el=>{
+    el.addEventListener("click",e=>{
+      e.preventDefault();
+      setLanguage(el.dataset.lang);
+    });
+  });
+
+  // On load
+  document.addEventListener("DOMContentLoaded",()=>setLanguage(localStorage.getItem("siteLang")||"nl"));
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

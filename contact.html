@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-key="contact_title">Contact</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand fw-semibold" href="index.html">Levente Iván</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto gap-lg-3 align-items-lg-center">
+        <li><a class="nav-link" data-key="nav_about" href="about.html">Over mij</a></li>
+        <li><a class="nav-link" data-key="nav_education" href="education.html">Educatie</a></li>
+        <li><a class="nav-link" data-key="nav_hobbies" href="hobbies.html">Hobby’s</a></li>
+        <li><a class="nav-link" data-key="nav_skills" href="skills.html">Skills</a></li>
+        <li><a class="nav-link" data-key="nav_contact" href="contact.html">Contact</a></li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" data-bs-toggle="dropdown">
+            <img src="./Pictures/nl.svg" class="flag"> Dutch
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" onclick="setLanguage('nl')"><img src="./Pictures/nl.svg" class="flag"> Dutch</a></li>
+            <li><a class="dropdown-item" onclick="setLanguage('hu')"><img src="./Pictures/hu.svg" class="flag"> Hungarian</a></li>
+            <li><a class="dropdown-item" onclick="setLanguage('en')"><img src="./Pictures/en.svg" class="flag"> English</a></li>
+          </ul>
+        </li>
+
+        <li><button class="btn btn-sm btn-darkmode" onclick="toggleDarkMode()">🌙</button></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main class="page-wrapper">
+  <section class="page-card">
+
+    <h1 data-key="contact_heading">Contact</h1>
+    <p data-key="contact_intro">
+      Wil je mij bereiken om iets te vragen of gewoonweg om met me te praten?
+      Je kan mij vinden via onderstaande platformen of een mail sturen via het formulier.
+    </p>
+
+    <div class="card-grid social-cards">
+      <a href="https://www.instagram.com/levivan_7/" target="_blank" class="social-card instagram">
+        <div class="card-content">
+          <i class="bi bi-instagram"></i>
+          <h4>Instagram</h4>
+          <p data-key="contact_instagram">Stuur me gerust een DM!</p>
+        </div>
+      </a>
+
+      <a href="https://www.linkedin.com/in/levente-ivan-0657882aa/" target="_blank" class="social-card linkedin">
+        <div class="card-content">
+          <i class="bi bi-linkedin"></i>
+          <h4>LinkedIn</h4>
+          <p data-key="contact_linkedin">Professioneel contact & connecties.</p>
+        </div>
+      </a>
+
+      <a href="https://github.com" target="_blank" class="social-card github">
+        <div class="card-content">
+          <i class="bi bi-github"></i>
+          <h4>GitHub</h4>
+          <p data-key="contact_github">Bekijk mijn projecten en code.</p>
+        </div>
+      </a>
+    </div>
+
+    <hr class="my-5">
+
+    <h2 data-key="contact_form_title">Stuur mij een mail</h2>
+    <p data-key="contact_form_text">
+      Dit formulier stuurt je mail rechtstreeks naar mijn mailbox!
+    </p>
+
+    <form action="https://api.web3forms.com/submit" method="POST" class="mt-4">
+      <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+
+      <div class="mb-3">
+        <label class="form-label" data-key="form_name">Naam</label>
+        <input type="text" class="form-control" name="name" data-key-placeholder="form_name_ph" placeholder="Jouw naam" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" data-key="form_email">Email</label>
+        <input type="email" class="form-control" name="email" data-key-placeholder="form_email_ph" placeholder="jij@example.com" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" data-key="form_message">Bericht</label>
+        <textarea class="form-control" rows="5" name="message" data-key-placeholder="form_message_ph" placeholder="Typ je bericht..." required></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-outline-dark w-100" data-key="form_send">
+        Verstuur Bericht
+      </button>
+    </form>
+
+  </section>
+</main>
+
+<script>
+const translations = {
+  nl: {
+    contact_title: "Contact",
+    nav_about: "Over mij",
+    nav_education: "Educatie",
+    nav_hobbies: "Hobby’s",
+    nav_skills: "Skills",
+    nav_contact: "Contact",
+    contact_heading: "Contact",
+    contact_intro: "Wil je mij bereiken om iets te vragen of gewoonweg om met me te praten? Je kan mij vinden via onderstaande platformen of een mail sturen via het formulier.",
+    contact_instagram: "Stuur me gerust een DM!",
+    contact_linkedin: "Professioneel contact & connecties.",
+    contact_github: "Bekijk mijn projecten en code.",
+    contact_form_title: "Stuur mij een mail",
+    contact_form_text: "Dit formulier stuurt je mail rechtstreeks naar mijn mailbox!",
+    form_name: "Naam",
+    form_name_ph: "Jouw naam",
+    form_email: "Email",
+    form_email_ph: "jij@example.com",
+    form_message: "Bericht",
+    form_message_ph: "Typ je bericht...",
+    form_send: "Verstuur Bericht"
+  },
+
+  en: {
+    contact_title: "Contact",
+    nav_about: "About me",
+    nav_education: "Education",
+    nav_hobbies: "Hobbies",
+    nav_skills: "Skills",
+    nav_contact: "Contact",
+    contact_heading: "Contact",
+    contact_intro: "Want to reach out or just have a chat? You can find me on the platforms below or send me an email using the form.",
+    contact_instagram: "Feel free to send me a DM!",
+    contact_linkedin: "Professional contact & connections.",
+    contact_github: "View my projects and code.",
+    contact_form_title: "Send me an email",
+    contact_form_text: "This form sends your message directly to my mailbox!",
+    form_name: "Name",
+    form_name_ph: "Your name",
+    form_email: "Email",
+    form_email_ph: "you@example.com",
+    form_message: "Message",
+    form_message_ph: "Type your message...",
+    form_send: "Send Message"
+  },
+
+  hu: {
+    contact_title: "Kapcsolat",
+    nav_about: "Rólam",
+    nav_education: "Oktatás",
+    nav_hobbies: "Hobbik",
+    nav_skills: "Készségek",
+    nav_contact: "Kapcsolat",
+    contact_heading: "Kapcsolat",
+    contact_intro: "Szeretnél kérdezni vagy csak beszélgetni? Elérsz az alábbi platformokon, vagy írhatsz nekem az űrlapon keresztül.",
+    contact_instagram: "Nyugodtan írj privát üzenetet!",
+    contact_linkedin: "Szakmai kapcsolat és hálózat.",
+    contact_github: "Nézd meg a projektjeimet és kódomat.",
+    contact_form_title: "Írj nekem emailt",
+    contact_form_text: "Ez az űrlap közvetlenül a postaládámba küldi az üzenetet!",
+    form_name: "Név",
+    form_name_ph: "A neved",
+    form_email: "Email",
+    form_email_ph: "Írd be az email címed...",
+    form_message: "Üzenet",
+    form_message_ph: "Írd be az üzeneted...",
+    form_send: "Üzenet küldése"
+  }
+};
+
+// Translation function including placeholders
+function setLanguage(lang) {
+  localStorage.setItem("siteLang", lang);
+
+  document.querySelectorAll("[data-key]").forEach(el => {
+    const key = el.dataset.key;
+    if (translations[lang][key]) el.textContent = translations[lang][key];
+  });
+
+  document.querySelectorAll("[data-key-placeholder]").forEach(el => {
+    const key = el.dataset.keyPlaceholder;
+    if (translations[lang][key]) el.placeholder = translations[lang][key];
+  });
+
+  const dropdown = document.getElementById("languageDropdown");
+  if (dropdown) {
+    const flag = lang === "nl" ? "nl" : lang === "hu" ? "hu" : "en";
+    const name = lang === "nl" ? "Dutch" : lang === "hu" ? "Hungarian" : "English";
+    dropdown.innerHTML = `<img src="./Pictures/${flag}.svg" class="flag"> ${name}`;
+  }
+}
+
+// Load saved language
+setLanguage(localStorage.getItem("siteLang") || "nl");
+
+// Dark mode
+if (localStorage.getItem("darkMode") === "enabled") {
+  document.body.classList.add("dark-mode");
+}
+function toggleDarkMode() {
+  document.body.classList.toggle("dark-mode");
+  localStorage.setItem("darkMode",
+    document.body.classList.contains("dark-mode") ? "enabled" : "disabled"
+  );
+}
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

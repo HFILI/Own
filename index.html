@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Levente Ivan</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="home">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand fw-semibold" href="index.html">Levente Iván</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto gap-lg-3 align-items-lg-center">
+        <li><a class="nav-link" data-key="nav_about" href="about.html">Over mij</a></li>
+        <li><a class="nav-link" data-key="nav_education" href="education.html">Educatie</a></li>
+        <li><a class="nav-link" data-key="nav_hobbies" href="hobbies.html">Hobby’s</a></li>
+        <li><a class="nav-link" data-key="nav_skills" href="skills.html">Skills</a></li>
+        <li><a class="nav-link" data-key="nav_contact" href="contact.html">Contact</a></li>
+
+        <!-- Language Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown">
+            <img src="./Pictures/nl.svg" class="flag"> Dutch
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item lang-select" href="#" data-lang="nl"><img src="./Pictures/nl.svg" class="flag"> Dutch</a></li>
+            <li><a class="dropdown-item lang-select" href="#" data-lang="hu"><img src="./Pictures/hu.svg" class="flag"> Hungarian</a></li>
+            <li><a class="dropdown-item lang-select" href="#" data-lang="en"><img src="./Pictures/en.svg" class="flag"> English</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <button class="btn btn-sm btn-darkmode" onclick="toggleDarkMode()">🌙</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Popup -->
+<main class="popup-wrapper">
+  <section class="popup-card">
+    <h1 data-key="popup_title">Wat wil je bekijken?</h1>
+    <p data-key="popup_desc">Kies een pagina hieronder.</p>
+    <div class="popup-links">
+      <a href="about.html" data-key="popup_about">👤 Over mij</a>
+      <a href="education.html" data-key="popup_education">🎓 Educatie</a>
+      <a href="hobbies.html" data-key="popup_hobbies">⚽ Hobby’s</a>
+      <a href="skills.html" data-key="popup_skills">💻 Skills</a>
+      <a href="contact.html" data-key="popup_contact">📩 Contact</a>
+    </div>
+  </section>
+</main>
+
+<!-- Scripts -->
+<script>
+  // Dark mode
+  if (localStorage.getItem("darkMode") === "enabled") document.body.classList.add("dark-mode");
+  function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+    localStorage.setItem("darkMode", document.body.classList.contains("dark-mode") ? "enabled" : "disabled");
+  }
+
+  const translations = {
+    nl:{nav_about:"Over mij",nav_education:"Educatie",nav_hobbies:"Hobby’s",nav_skills:"Skills",nav_contact:"Contact",
+        popup_title:"Wat wil je bekijken?",popup_desc:"Kies een pagina hieronder.",
+        popup_about:"👤 Over mij",popup_education:"🎓 Educatie",popup_hobbies:"⚽ Hobby’s",popup_skills:"💻 Skills",popup_contact:"📩 Contact"},
+    hu:{nav_about:"Rólam",nav_education:"Oktatás",nav_hobbies:"Hobbik",nav_skills:"Készségek",nav_contact:"Kapcsolat",
+        popup_title:"Mit szeretnél megnézni?",popup_desc:"Válassz egy oldalt alább.",
+        popup_about:"👤 Rólam",popup_education:"🎓 Oktatás",popup_hobbies:"⚽ Hobbik",popup_skills:"💻 Készségek",popup_contact:"📩 Kapcsolat"},
+    en:{nav_about:"About me",nav_education:"Education",nav_hobbies:"Hobbies",nav_skills:"Skills",nav_contact:"Contact",
+        popup_title:"What do you want to view?",popup_desc:"Choose a page below.",
+        popup_about:"👤 About me",popup_education:"🎓 Education",popup_hobbies:"⚽ Hobbies",popup_skills:"💻 Skills",popup_contact:"📩 Contact"}
+  };
+
+  function setLanguage(lang) {
+    localStorage.setItem("siteLang", lang);
+
+    // Update all text
+    document.querySelectorAll("[data-key]").forEach(el=>{
+      const key = el.dataset.key;
+      if(translations[lang][key]) el.textContent = translations[lang][key];
+    });
+
+    // Update dropdown with flag
+    const dropdown = document.getElementById("languageDropdown");
+    if(dropdown){
+      let flagSrc = lang === "nl" ? "./Pictures/nl.svg" :
+                    lang === "hu" ? "./Pictures/hu.svg" :
+                    "./Pictures/en.svg";
+      let langText = lang === "nl" ? "Dutch" :
+                    lang === "hu" ? "Hungarian" :
+                    "English";
+      dropdown.innerHTML = `<img src="${flagSrc}" class="flag"> ${langText}`;
+    }
+  }
+
+  // Attach click events
+  document.querySelectorAll(".lang-select").forEach(el=>{
+    el.addEventListener("click", e=>{
+      e.preventDefault();
+      const lang = el.dataset.lang;
+      setLanguage(lang);
+    });
+  });
+
+  // On page load, set saved language
+  document.addEventListener("DOMContentLoaded", ()=>{
+    const savedLang = localStorage.getItem("siteLang") || "nl";
+    setLanguage(savedLang);
+  });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+function setLanguage(lang) {
+  localStorage.setItem("selectedLanguage", lang);
+  updateLanguage();
+}
+
+function updateLanguage() {
+  const lang = localStorage.getItem("selectedLanguage") || "nl";
+
+  // Update dropdown with flag image
+  const dropdown = document.getElementById("languageDropdown");
+  if (dropdown) {
+    let flagSrc = lang === "nl" ? "flags/nl.png" :
+                  lang === "hu" ? "flags/hu.png" :
+                  "flags/gb.png";
+    let langText = lang === "nl" ? "Dutch" :
+                   lang === "hu" ? "Hungarian" :
+                   "English";
+    dropdown.innerHTML = `<img src="${flagSrc}" class="flag" alt="${lang.toUpperCase()}"> ${langText}`;
+  }
+
+  // Update all content with data attributes
+  document.querySelectorAll("[data-lang-nl]").forEach(el => {
+    el.textContent = lang === "nl" ? el.dataset.langNl :
+                     lang === "hu" ? el.dataset.langHu :
+                     lang === "en" ? el.dataset.langEn :
+                     el.dataset.langNl;
+  });
+
+</script>
+
+</body>
+</html>
